@@ -12,7 +12,7 @@
 			<ul>
                 <li><g:link controller="user" action="home"><g:message code="default.home.label"/></g:link></li>
                 <li><g:link controller="user" action="logout">Logout</g:link></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list">Payment List</g:link></li>
 			</ul>
 		</div>
 		<div id="create-payRole" class="content scaffold-create" role="main">
