@@ -18,7 +18,11 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href=""><img src="${resource(dir: 'images', file: 'hamro-party-logo-en.png')}" alt="Grails"/></a></div>
+		<div id="grailsLogo" role="banner"><a href=""><img src="${resource(dir: 'images', file: 'hamro-party-logo-en.png')}" alt="Grails"/></a>
+       <g:if test="${session.user}">
+           <b><g:message default=" Welcome To: ${session.user.name}" args="afsfsd" code="a"/></b>
+       </g:if>
+        </div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
