@@ -68,13 +68,22 @@
     <g:textField name="state" required="" value="${registrationInstance?.state}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'district', 'error')} required">
+%{--<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'district', 'error')} required">
     <label for="district">
         <g:message code="registration.district.label" default="District" />
         <span class="required-indicator">*</span>
     </label>
     <g:textField name="district" maxlength="50" required="" value="${registrationInstance?.district}"/>
+</div>--}%
+
+<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'district', 'error')} required">
+    <label for="district">
+        <g:message code="registration.gender.label" default="District" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:select name="district" from="${registrationInstance.constraints.district.inList}" required="" value="${registrationInstance?.district}" valueMessagePrefix="registration.district"/>
 </div>
+
 
 <div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'vdcMunicipality', 'error')} required">
     <label for="vdcMunicipality">

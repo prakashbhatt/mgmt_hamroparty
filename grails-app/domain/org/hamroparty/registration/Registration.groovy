@@ -1,5 +1,6 @@
 package org.hamroparty.registration
 
+import constant.MgmtConstants
 import org.hamroparty.payrole.PayRole
 
 class Registration {
@@ -39,7 +40,7 @@ class Registration {
         temporaryAddress(blank: false)
         zone(blank: false)
         state(blank: false)
-        district(blank: false, maxSize: 50)
+        district(blank: false, maxSize: 50, inList:MgmtConstants.districtList.sort())
         vdcMunicipality(blank: false, maxSize: 50)
         wardNo(blank: false, maxSize: 50)
         gender(blank: false, inList: ["Male","Female","Unknown"])
