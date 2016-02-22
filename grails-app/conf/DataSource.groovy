@@ -18,8 +18,10 @@ environments {
             dbCreate = "update"
             url = "jdbc:mysql://localhost/hamroparty"
             driverClassName = "com.mysql.jdbc.Driver"
-            username = "root"
-            password = ""
+           /* username = "root"
+            password = ""*/
+            username = "hamroparty"
+            password = "wX5DBfXe"
         }
     }
     test {
@@ -31,10 +33,13 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/hamroparty"
+           // url = "jdbc:mysql://localhost/hamroparty"
+            url = "jdbc:mysql://hamroparty.org/i2071759_wp1"
             driverClassName = "com.mysql.jdbc.Driver"
-            username = "root"
-            password = ""
+           /* username = "root"
+            password = ""*/
+            username = "i2071759_wp1"
+            password = "mT?&2qt}]cTM"
 
             pooled = true
             properties {

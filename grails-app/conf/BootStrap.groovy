@@ -4,7 +4,7 @@ import org.hamroparty.user.User
 class BootStrap {
 
     def init = { servletContext ->
-        new User(name: "admin",password: "admin",email: "admin@gmail.com",role: "admin").save()
+        new User(name: "admin",password: "admin123#",email: "admin@gmail.com",role: "admin").save()
         new User(name: "Prakash",password: "prakash",email: "prakash@gmail.com",role: "app").save()
 
 
