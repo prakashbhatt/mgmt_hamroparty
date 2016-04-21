@@ -32,7 +32,10 @@ class RegistrationController extends BaseController{
             def registration = Registration.list([max: 1, sort: "sn", order: "desc"])
             params.sn = Integer.parseInt(registration.get(0).sn)+1
         }
-        params.memberId = generateMemberId(params.registrationDate.toString(), params.district)
+
+        def registration = Registration.list([max: 1, sort: "id", order: "desc"])
+
+        params.memberId = generateMemberId(params.registrationDate.toString(), params.district, registration.id.toString())
         params.sequence = getMemberSequence(params.district)
 
         def registrationInstance = new Registration(params)
@@ -88,7 +91,7 @@ class RegistrationController extends BaseController{
 
         Registration registration = Registration.findByIdAndMemberId(params.id, "")
         if (registration) {
-            params.memberId = generateMemberId(params.registrationDate.toString(), params.district)
+            params.memberId = generateMemberId(params.registrationDate.toString(), params.district, params.id)
             params.sequence = getMemberSequence(params.district)
         }
 
@@ -154,11 +157,11 @@ class RegistrationController extends BaseController{
 
     }
 
-    public String generateMemberId(String date, String districtName) {
+    public String generateMemberId(String date, String districtName,String id) {
 
         District district = District.findByName(districtName)
         String districtCode= district? district.code:'-';
-        String memberId = formatDate(date)+'-'+districtCode+'-'+getSequence(districtName)
+        String memberId = formatDate(date)+'-'+districtCode+'-'+id+'-'+getSequence(districtName)
         println "memberId------->"+memberId
 
         return memberId
@@ -177,7 +180,6 @@ class RegistrationController extends BaseController{
         Registration result = results.get(0);
 
         int sequence = result.sequence;
-        println "seq-----------"+sequence
         if (sequence && sequence>=101) {
             sequence = sequence+1;
         } else sequence = 101;
@@ -216,17 +218,26 @@ class RegistrationController extends BaseController{
 
     def updateAll() {
 
-         String query = "update Registration set sequence=0,memberId='' ";
-
-        Registration.executeUpdate(query)
+        String update = params.update;
+        if (update.equalsIgnoreCase("ALL")) {
+            String query = "update Registration set sequence=0,memberId='' ";
+            Registration.executeUpdate(query)
+        }
 
         Map<String,String> genderMap = new HashMap<>();
         genderMap.put("M","Male")
         genderMap. put("F","Female")
 
-        List<Registration> registrations = Registration.findAll().sort{it.id}
+        //List<Registration> registrations = Registration.findAll().sort{it.id}
+
+        def c = Registration.createCriteria()
+        def registrations = c.list {
+            eq("memberId", '')
+            order("id", "asc")
+        }
+
         for (Registration re : registrations) {
-            re.memberId = generateMemberId(re.registrationDate.toString(), re.district)
+            re.memberId = generateMemberId(re.registrationDate.toString(), re.district,re.id.toString())
             re.sequence = getMemberSequence(re.district)
 
             if (genderMap.containsKey(re.gender)) {
