@@ -29,6 +29,8 @@ class Registration {
     Boolean acceptMember = false;
     String acceptedBy
     String rejectedBy
+    int sequence
+    String memberId
 
 
     static constraints = {

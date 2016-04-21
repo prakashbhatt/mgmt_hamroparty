@@ -14,8 +14,16 @@ class MgmtConstants {
          "Palpa","Nawalparasi","Rupandehi","Kapilvastu","Manang","Gorkha","Lamjung","Kaski","Syangja","Tanahun","Mustang","Myagdi",
          "Baglung","Parwat","Rukum","Salyan","Rolpa","Pyuthan","Dang","Dailekh","Jajarkot","Surkhet","Bardiya","Banke",
          "Banke","Mugu","Dolpa","Jumla","Kalikot","Bajhang","Bajura","Doti","Achham","Kailali","Darchula","Baitadi",
-         "Dadeldhura","Kanchanpur"]
+         "Dadeldhura","Kanchanpur","Humla"]
 
-
- 
+   /* public static final List<String> districtRaw = ["Illam","Jhapa","Pachthar","Taplejung","Bhojpur","Dhankuta","Morang"
+            ,"Sunsari","Sankhuwasaba","Tehrathum"
+            ,"Khotang","Okhaldhunga","Saptari","Siraha","Solukhumbu","Udaypur","Dhanusha","Dolakha","Mahottari",
+            "Ramechhap","Sarlahi","Sindhuli","Bhaktapur","Dhading","Kathmandu","Kavrepalanchok","Lalitpur","Nuwakot"
+            ,"Rasuwa","Sindhupalchok","Bara","Chitwan","Makawanpur","Parsa","Rautahat","Gorkha","Kaski","Lamjung",
+            "Manang","Syangja","Tanahun","Baglung","Parwat","Mustang","Myagdi","Gulmi","Kapilvastu",
+            "Nawalparasi","Palpa","Rupandehi","Dang","Pyuthan","Rolpa","Rukum","Salyan","Banke","Bardiya","Dailekh",
+            "Jajarkot","Surkhet","Dolpa","Humla","Jumla","Kalikot","Mugu","Achham","Bajhang","Bajura","Doti","Kailali",
+            "Baitadi","Dadeldhura","Darchula","Kanchanpur","Arghakhanchi"]
+*/
 }

@@ -18,10 +18,10 @@ environments {
             dbCreate = "update"
             url = "jdbc:mysql://localhost/hamroparty"
             driverClassName = "com.mysql.jdbc.Driver"
-           /* username = "root"
-            password = ""*/
-            username = "hamroparty"
-            password = "wX5DBfXe"
+            username = "root"
+            password = ""
+           /* username = "hamroparty"
+            password = "wX5DBfXe"*/
         }
     }
     test {
