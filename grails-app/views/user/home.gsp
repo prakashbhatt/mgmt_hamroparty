@@ -15,14 +15,14 @@
 
 </head>
 
-<body>
+<body class="body_fullpage">
 <a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                            default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
     <ul>
         <li><g:link controller="user" action="home"><g:message code="default.home.label"/></g:link></li>
-        <li><g:link controller="user" action="logout">Logout</g:link></li>
+
         <g:if test="${session.user.role=="admin"}">
 
             <li><g:link class="create" action="create"><g:message code="default.new.label"
@@ -33,6 +33,7 @@
                                                                                             args="[entityName]"/></g:link></li>
 
         </g:if>
+        <li><g:link controller="user" action="logout">Logout</g:link></li>
     </ul>
 </div>
 
@@ -52,6 +53,7 @@
                 <g:sortableColumn property="lastName" title="${message(code: 'registration.lastName.label', default: 'Last Name')}"/>
                 <g:sortableColumn property="emailAddress" title="${message(code: 'registration.email.label', default: 'Email')}"/>
                 <g:sortableColumn property="contractNo" title="${message(code: 'registration.contractNo.label', default: 'Contact')}"/>
+                <g:sortableColumn property="memberStatus" title="${message(code: 'registration.memberStatus.label', default: 'Member Status')}"/>
                 <g:sortableColumn property="action" title="${message(code: 'action', default: 'Action')}"/>
             </tr>
 
@@ -64,6 +66,7 @@
                   <td><input type="text" class="searchBox" name="lastName" id="lastName"></td>
                   <td><input type="text" class="searchBox" name="emailAddress" id="emailAddress"></td>
                   <td><input type="text" class="searchBox" name="contractNo" id="contractNo"></td>
+                  <td><input type="text" class="searchBox" name="memberStatus" id="memberStatus"></td>
                   <td><g:actionSubmit action="home" controller="user" value="Search"/></td>
               </tr>
                 <input type="hidden" name="newMember" id="newMember" value="newMember">
@@ -78,6 +81,7 @@
                         <td>${fieldValue(bean: userInstance, field: "lastName")}</td>
                         <td>${fieldValue(bean: userInstance, field: "emailAddress")}</td>
                         <td>${fieldValue(bean: userInstance, field: "contractNo")}</td>
+                        <td class="blink_text">${fieldValue(bean: userInstance, field: "memberStatus")}  &#10026</td>
                         <td>
                             <g:link controller="registration" action="acceptMember" params="[id:"${userInstance.id}"]" onclick = "return confirm('Are you sure?');">Accept</g:link> /
                             <g:link controller="registration" action="deniedMember" params="[id:"${userInstance.id}"]" onclick = "return confirm('Are you sure?. Please confirm for delete member from the system.');">Reject</g:link>
@@ -109,10 +113,12 @@
         <table>
             <thead>
             <tr>
+                <g:sortableColumn property="memberId" title="${message(code: 'registration.memberId.label', default: 'Member ID')}"/>
                 <g:sortableColumn property="firstName" title="${message(code: 'registration.firstName.label', default: 'First Name')}"/>
                 <g:sortableColumn property="lastName" title="${message(code: 'registration.lastName.label', default: 'Last Name')}"/>
                 <g:sortableColumn property="emailAddress" title="${message(code: 'registration.email.label', default: 'Email')}"/>
                 <g:sortableColumn property="contractNo" title="${message(code: 'registration.contractNo.label', default: 'Contact')}"/>
+                <g:sortableColumn property="memberStatus" title="${message(code: 'memberStatus', default: 'Member Status')}"/>
                 <g:sortableColumn property="action" title="${message(code: 'action', default: 'Accepted By')}"/>
             </tr>
 
@@ -122,10 +128,12 @@
 
             <g:form>
                 <tr>
+                    <td><input type="text" class="searchBox" name="memberId"></td>
                     <td><input type="text" class="searchBox" name="firstName"></td>
                     <td><input type="text" class="searchBox" name="lastName"></td>
                     <td><input type="text" class="searchBox" name="emailAddress"></td>
                     <td><input type="text" class="searchBox" name="contractNo" ></td>
+                    <td><input type="text" class="searchBox" name="memberStatus" ></td>
                     <td><g:actionSubmit action="home" controller="user" value="Search"/></td>
                 </tr>
                 <input type="hidden" name="oldMember" value="oldMember">
@@ -135,11 +143,13 @@
                 <g:each in="${oldRegistration}" status="i" var="userInstance">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                        <td><g:link action="show" controller="registration" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "firstName")}</g:link></td>
+                        <td><g:link action="show" controller="registration" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "memberId")}</g:link></td>
+                        <td>${fieldValue(bean: userInstance, field: "firstName")}</td>
                         <td>${fieldValue(bean: userInstance, field: "lastName")}</td>
                         <td>${fieldValue(bean: userInstance, field: "emailAddress")}</td>
                         <td>${fieldValue(bean: userInstance, field: "contractNo")}</td>
-                        <td>"${User.get(userInstance.id)}"</td>
+                        <td>${fieldValue(bean: userInstance, field: "memberStatus")}</td>
+                        <td>"${User.get(userInstance.acceptedBy)}"</td>
                        %{-- <td>
                            <g:link controller="registration" action="deniedMember" params="[id:"${userInstance.id}", acceptMember:"false"]" onclick = "return confirm('Are you sure?. This member is seen in new list again.');">Reject</g:link>
                         </td>--}%

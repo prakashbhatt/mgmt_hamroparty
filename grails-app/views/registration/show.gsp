@@ -11,11 +11,11 @@
 		<a href="#show-registration" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-                <li><g:link controller="user" action="home"><g:message code="default.home.label"/></g:link></li>
-                <li><g:link controller="user" action="logout">Logout</g:link></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="home" controller="user" action="home"><g:message code="default.home.label"/></g:link></li>
+                <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+                <li><g:link controller="user" action="logout">Logout</g:link></li>
+            </ul>
 		</div>
 		<div id="show-registration" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
@@ -23,19 +23,10 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list registration">
-			
-				<g:if test="${registrationInstance?.sn}">
-				<li class="fieldcontain">
-					<span id="sn-label" class="property-label"><g:message code="registration.sn.label" default="Sn" /></span>
-					
-						<span class="property-value" aria-labelledby="sn-label"><g:fieldValue bean="${registrationInstance}" field="sn"/></span>
-					
-				</li>
-				</g:if>
 
             <g:if test="${registrationInstance?.memberId}">
                 <li class="fieldcontain">
-                    <span id="memberId-label" class="property-label"><g:message code="registration.memberId.label" default="Member Id" /></span>
+                    <span id="memberId-label" class="property-label"><g:message code="registration.memberId.label" default="Member ID" /></span>
 
                     <span class="property-value" aria-labelledby="memberId-label"><g:fieldValue bean="${registrationInstance}" field="memberId"/></span>
 
@@ -69,38 +60,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.permanentAddress}">
-				<li class="fieldcontain">
-					<span id="permanentAddress-label" class="property-label"><g:message code="registration.permanentAddress.label" default="Permanent Address" /></span>
-					
-						<span class="property-value" aria-labelledby="permanentAddress-label"><g:fieldValue bean="${registrationInstance}" field="permanentAddress"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${registrationInstance?.temporaryAddress}">
-				<li class="fieldcontain">
-					<span id="temporaryAddress-label" class="property-label"><g:message code="registration.temporaryAddress.label" default="Temporary Address" /></span>
-					
-						<span class="property-value" aria-labelledby="temporaryAddress-label"><g:fieldValue bean="${registrationInstance}" field="temporaryAddress"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${registrationInstance?.zone}">
 				<li class="fieldcontain">
 					<span id="zone-label" class="property-label"><g:message code="registration.zone.label" default="Zone" /></span>
 					
 						<span class="property-value" aria-labelledby="zone-label"><g:fieldValue bean="${registrationInstance}" field="zone"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${registrationInstance?.state}">
-				<li class="fieldcontain">
-					<span id="state-label" class="property-label"><g:message code="registration.state.label" default="State" /></span>
-					
-						<span class="property-value" aria-labelledby="state-label"><g:fieldValue bean="${registrationInstance}" field="state"/></span>
 					
 				</li>
 				</g:if>
@@ -132,11 +96,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.gender}">
+				<g:if test="${registrationInstance?.streetTole}">
 				<li class="fieldcontain">
-					<span id="gender-label" class="property-label"><g:message code="registration.gender.label" default="Gender" /></span>
+					<span id="streetTole-label" class="property-label"><g:message code="registration.streetTole.label" default="Street Tole" /></span>
 					
-						<span class="property-value" aria-labelledby="gender-label"><g:fieldValue bean="${registrationInstance}" field="gender"/></span>
+						<span class="property-value" aria-labelledby="streetTole-label"><g:fieldValue bean="${registrationInstance}" field="streetTole"/></span>
 					
 				</li>
 				</g:if>
@@ -150,11 +114,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.occupation}">
+				<g:if test="${registrationInstance?.gender}">
 				<li class="fieldcontain">
-					<span id="occupation-label" class="property-label"><g:message code="registration.occupation.label" default="Occupation" /></span>
+					<span id="gender-label" class="property-label"><g:message code="registration.gender.label" default="Gender" /></span>
 					
-						<span class="property-value" aria-labelledby="occupation-label"><g:fieldValue bean="${registrationInstance}" field="occupation"/></span>
+						<span class="property-value" aria-labelledby="gender-label"><g:fieldValue bean="${registrationInstance}" field="gender"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.applicationDate}">
+				<li class="fieldcontain">
+					<span id="applicationDate-label" class="property-label"><g:message code="registration.applicationDate.label" default="Application Date" /></span>
+					
+						<span class="property-value" aria-labelledby="applicationDate-label"><g:formatDate date="${registrationInstance?.applicationDate}" /></span>
 					
 				</li>
 				</g:if>
@@ -168,11 +141,66 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.emailAddress}">
+				<g:if test="${registrationInstance?.educationDetails}">
 				<li class="fieldcontain">
-					<span id="emailAddress-label" class="property-label"><g:message code="registration.emailAddress.label" default="Email Address" /></span>
+					<span id="educationDetails-label" class="property-label"><g:message code="registration.educationDetails.label" default="Education Details" /></span>
 					
-						<span class="property-value" aria-labelledby="emailAddress-label"><g:fieldValue bean="${registrationInstance}" field="emailAddress"/></span>
+						<span class="property-value" aria-labelledby="educationDetails-label"><g:fieldValue bean="${registrationInstance}" field="educationDetails"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.occupation}">
+				<li class="fieldcontain">
+					<span id="occupation-label" class="property-label"><g:message code="registration.occupation.label" default="Occupation" /></span>
+					
+						<span class="property-value" aria-labelledby="occupation-label"><g:fieldValue bean="${registrationInstance}" field="occupation"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${registrationInstance?.image}">
+				<li class="fieldcontain">
+					<span id="image-label" class="property-label">
+                        <g:message code="registration.image.label" default="Image" /></span>
+                    <span>
+                        <img src="${createLink(controller:'registration', action:'image', id: registrationInstance.id)}" height="100px" width="100px"/>
+                    </span>
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.fatherName}">
+				<li class="fieldcontain">
+					<span id="fatherName-label" class="property-label"><g:message code="registration.fatherName.label" default="Father Name" /></span>
+					
+						<span class="property-value" aria-labelledby="fatherName-label"><g:fieldValue bean="${registrationInstance}" field="fatherName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.motherName}">
+				<li class="fieldcontain">
+					<span id="motherName-label" class="property-label"><g:message code="registration.motherName.label" default="Mother Name" /></span>
+					
+						<span class="property-value" aria-labelledby="motherName-label"><g:fieldValue bean="${registrationInstance}" field="motherName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.grandFatherName}">
+				<li class="fieldcontain">
+					<span id="grandFatherName-label" class="property-label"><g:message code="registration.grandFatherName.label" default="Grand Father Name" /></span>
+					
+						<span class="property-value" aria-labelledby="grandFatherName-label"><g:fieldValue bean="${registrationInstance}" field="grandFatherName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.grandMotherName}">
+				<li class="fieldcontain">
+					<span id="grandMotherName-label" class="property-label"><g:message code="registration.grandMotherName.label" default="Grand Mother Name" /></span>
+					
+						<span class="property-value" aria-labelledby="grandMotherName-label"><g:fieldValue bean="${registrationInstance}" field="grandMotherName"/></span>
 					
 				</li>
 				</g:if>
@@ -186,68 +214,178 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.parentFirstName}">
+				<g:if test="${registrationInstance?.emailAddress}">
 				<li class="fieldcontain">
-					<span id="parentFirstName-label" class="property-label"><g:message code="registration.parentFirstName.label" default="Parent First Name" /></span>
+					<span id="emailAddress-label" class="property-label"><g:message code="registration.emailAddress.label" default="Email Address" /></span>
 					
-						<span class="property-value" aria-labelledby="parentFirstName-label"><g:fieldValue bean="${registrationInstance}" field="parentFirstName"/></span>
+						<span class="property-value" aria-labelledby="emailAddress-label"><g:fieldValue bean="${registrationInstance}" field="emailAddress"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.parentMiddleName}">
+				<g:if test="${registrationInstance?.howDidYouHearAboutUs}">
 				<li class="fieldcontain">
-					<span id="parentMiddleName-label" class="property-label"><g:message code="registration.parentMiddleName.label" default="Parent Middle Name" /></span>
+					<span id="howDidYouHearAboutUs-label" class="property-label"><g:message code="registration.howDidYouHearAboutUs.label" default="How Did You Hear About Us" /></span>
 					
-						<span class="property-value" aria-labelledby="parentMiddleName-label"><g:fieldValue bean="${registrationInstance}" field="parentMiddleName"/></span>
+						<span class="property-value" aria-labelledby="howDidYouHearAboutUs-label"><g:fieldValue bean="${registrationInstance}" field="howDidYouHearAboutUs"/></span>
+					
+				</li>
+				</g:if>
+
+
+			%{--
+				<g:if test="${registrationInstance?.memberStatus}">
+				<li class="fieldcontain">
+					<span id="memberStatus-label" class="property-label"><g:message code="registration.memberStatus.label" default="Member Status" /></span>
+					
+						<span class="property-value" aria-labelledby="memberStatus-label"><g:fieldValue bean="${registrationInstance}" field="memberStatus"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.parentLastName}">
+				<g:if test="${registrationInstance?.acceptedBy}">
 				<li class="fieldcontain">
-					<span id="parentLastName-label" class="property-label"><g:message code="registration.parentLastName.label" default="Parent Last Name" /></span>
+					<span id="acceptedBy-label" class="property-label"><g:message code="registration.acceptedBy.label" default="Accepted By" /></span>
 					
-						<span class="property-value" aria-labelledby="parentLastName-label"><g:fieldValue bean="${registrationInstance}" field="parentLastName"/></span>
+						<span class="property-value" aria-labelledby="acceptedBy-label"><g:fieldValue bean="${registrationInstance}" field="acceptedBy"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${registrationInstance?.parentGender}">
+				<g:if test="${registrationInstance?.rejectedBy}">
 				<li class="fieldcontain">
-					<span id="parentGender-label" class="property-label"><g:message code="registration.parentGender.label" default="Parent Gender" /></span>
+					<span id="rejectedBy-label" class="property-label"><g:message code="registration.rejectedBy.label" default="Rejected By" /></span>
 					
-						<span class="property-value" aria-labelledby="parentGender-label"><g:fieldValue bean="${registrationInstance}" field="parentGender"/></span>
+						<span class="property-value" aria-labelledby="rejectedBy-label"><g:fieldValue bean="${registrationInstance}" field="rejectedBy"/></span>
 					
 				</li>
 				</g:if>
-
-            %{--<g:if test="${registrationInstance?.acceptedBy}">
-            <li class="fieldcontain">
-                <span id="acceptedBy-label" class="property-label"><g:message code="registration.acceptedBy.label" default="Accepted By" /></span>
-
-                    <span class="property-value" aria-labelledby="acceptedBy-label"><g:fieldValue bean="${registrationInstance}" field="acceptedBy"/>an>
-
-            </li>
-            </g:if>
-
-            %{--<g:if test="${registrationInstance?.rejectedBy}">
-            <li class="fieldcontain">
-                <span id="rejectedBy-label" class="property-label"><g:message code="registration.rejectedBy.label" default="Rejected By" /></span>
-
-                    <span class="property-value" aria-labelledby="rejectedBy-label"><g:fieldValue bean="${registrationInstance}" field="rejectedBy"/></span>
-
-            </li>
-            </g:if>
-
-            <g:if test="${registrationInstance?.acceptMember}">
-            <li class="fieldcontain">
-                <span id="acceptMember-label" class="property-label"><g:message code="registration.acceptMember.label" default="Accept Member" /></span>
-
-                    <span class="property-value" aria-labelledby="acceptMember-label"><g:formatBoolean boolean="${registrationInstance?.acceptMember}" /></span>
-
-            </li>
-            </g:if>--}%
+			
+				<g:if test="${registrationInstance?.sequence}">
+				<li class="fieldcontain">
+					<span id="sequence-label" class="property-label"><g:message code="registration.sequence.label" default="Sequence" /></span>
+					
+						<span class="property-value" aria-labelledby="sequence-label"><g:fieldValue bean="${registrationInstance}" field="sequence"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.s_field1}">
+				<li class="fieldcontain">
+					<span id="s_field1-label" class="property-label"><g:message code="registration.s_field1.label" default="Sfield1" /></span>
+					
+						<span class="property-value" aria-labelledby="s_field1-label"><g:fieldValue bean="${registrationInstance}" field="s_field1"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.s_field2}">
+				<li class="fieldcontain">
+					<span id="s_field2-label" class="property-label"><g:message code="registration.s_field2.label" default="Sfield2" /></span>
+					
+						<span class="property-value" aria-labelledby="s_field2-label"><g:fieldValue bean="${registrationInstance}" field="s_field2"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.s_field3}">
+				<li class="fieldcontain">
+					<span id="s_field3-label" class="property-label"><g:message code="registration.s_field3.label" default="Sfield3" /></span>
+					
+						<span class="property-value" aria-labelledby="s_field3-label"><g:fieldValue bean="${registrationInstance}" field="s_field3"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.s_field4}">
+				<li class="fieldcontain">
+					<span id="s_field4-label" class="property-label"><g:message code="registration.s_field4.label" default="Sfield4" /></span>
+					
+						<span class="property-value" aria-labelledby="s_field4-label"><g:fieldValue bean="${registrationInstance}" field="s_field4"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.i_field1}">
+				<li class="fieldcontain">
+					<span id="i_field1-label" class="property-label"><g:message code="registration.i_field1.label" default="Ifield1" /></span>
+					
+						<span class="property-value" aria-labelledby="i_field1-label"><g:fieldValue bean="${registrationInstance}" field="i_field1"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.i_field2}">
+				<li class="fieldcontain">
+					<span id="i_field2-label" class="property-label"><g:message code="registration.i_field2.label" default="Ifield2" /></span>
+					
+						<span class="property-value" aria-labelledby="i_field2-label"><g:fieldValue bean="${registrationInstance}" field="i_field2"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.i_field3}">
+				<li class="fieldcontain">
+					<span id="i_field3-label" class="property-label"><g:message code="registration.i_field3.label" default="Ifield3" /></span>
+					
+						<span class="property-value" aria-labelledby="i_field3-label"><g:fieldValue bean="${registrationInstance}" field="i_field3"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.i_field4}">
+				<li class="fieldcontain">
+					<span id="i_field4-label" class="property-label"><g:message code="registration.i_field4.label" default="Ifield4" /></span>
+					
+						<span class="property-value" aria-labelledby="i_field4-label"><g:fieldValue bean="${registrationInstance}" field="i_field4"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.df1}">
+				<li class="fieldcontain">
+					<span id="df1-label" class="property-label"><g:message code="registration.df1.label" default="Df1" /></span>
+					
+						<span class="property-value" aria-labelledby="df1-label"><g:formatDate date="${registrationInstance?.df1}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.df2}">
+				<li class="fieldcontain">
+					<span id="df2-label" class="property-label"><g:message code="registration.df2.label" default="Df2" /></span>
+					
+						<span class="property-value" aria-labelledby="df2-label"><g:formatDate date="${registrationInstance?.df2}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.df3}">
+				<li class="fieldcontain">
+					<span id="df3-label" class="property-label"><g:message code="registration.df3.label" default="Df3" /></span>
+					
+						<span class="property-value" aria-labelledby="df3-label"><g:formatDate date="${registrationInstance?.df3}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.df4}">
+				<li class="fieldcontain">
+					<span id="df4-label" class="property-label"><g:message code="registration.df4.label" default="Df4" /></span>
+					
+						<span class="property-value" aria-labelledby="df4-label"><g:formatDate date="${registrationInstance?.df4}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${registrationInstance?.acceptMember}">
+				<li class="fieldcontain">
+					<span id="acceptMember-label" class="property-label"><g:message code="registration.acceptMember.label" default="Accept Member" /></span>
+					
+						<span class="property-value" aria-labelledby="acceptMember-label"><g:formatBoolean boolean="${registrationInstance?.acceptMember}" /></span>
+					
+				</li>
+				</g:if>--}%
 			
 			</ol>
 			<g:form>

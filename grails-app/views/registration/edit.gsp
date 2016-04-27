@@ -10,11 +10,11 @@
 		<a href="#edit-registration" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-                <li><g:link controller="user" action="home"><g:message code="default.home.label"/></g:link></li>
-                <li><g:link controller="user" action="logout">Logout</g:link></li>
+                <li><g:link class="home" controller="user" action="home"><g:message code="default.home.label"/></g:link></li>
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+                <li><g:link controller="user" action="logout">Logout</g:link></li>
+            </ul>
 		</div>
 		<div id="edit-registration" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
@@ -28,7 +28,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:form method="post"  enctype="multipart/form-data">
 				<g:hiddenField name="id" value="${registrationInstance?.id}" />
 				<g:hiddenField name="version" value="${registrationInstance?.version}" />
 				<fieldset class="form">

@@ -7,23 +7,23 @@ package constant
  * To change this template use File | Settings | File Templates.
  */
 class MgmtConstants {
- public static final List<String> districtList = ["Taplejung","Pachthar","Illam","Jhapa","Sankhuwasaba","Bhojpur",
-         "Tehrathum","Dhankuta","Morang","Sunsari","Solukhumbu","Okhaldhunga","Khotang","Udaypur","Siraha","Saptari",
-         "Dolakha","Ramechhap","Sindhuli","Sarlahi","Mahottari","Dhanusha","Chitwan","Makawanpur","Parsa","Bara","Rautahat",
+ public static final List<String> districtList = ["Taplejung","Panchthar","Ilam","Jhapa","Sankhuwasabha","Bhojpur",
+         "Terhathum","Dhankuta","Morang","Sunsari","Solukhumbu","Okhaldhunga","Khotang","Udayapur","Siraha","Saptari",
+         "Dolakha","Ramechhap","Sindhuli","Sarlahi","Mahottari","Dhanusa","Chitawan","Makwanpur","Parsa","Bara","Rautahat",
          "Rasuwa","Nuwakot","Sindhupalchok","Dhading","Kavrepalanchok","Kathmandu","Bhaktapur","Lalitpur","Gulmi","Arghakhanchi",
-         "Palpa","Nawalparasi","Rupandehi","Kapilvastu","Manang","Gorkha","Lamjung","Kaski","Syangja","Tanahun","Mustang","Myagdi",
-         "Baglung","Parwat","Rukum","Salyan","Rolpa","Pyuthan","Dang","Dailekh","Jajarkot","Surkhet","Bardiya","Banke",
+         "Palpa","Nawalparasi","Rupandehi","Kapilbastu","Manang","Gorkha","Lamjung","Kaski","Syangja","Tanahu","Mustang","Myagdi",
+         "Baglung","Parbat","Rukum","Salyan","Rolpa","Pyuthan","Dang","Dailekh","Jajarkot","Surkhet","Bardiya","Banke",
          "Banke","Mugu","Dolpa","Jumla","Kalikot","Bajhang","Bajura","Doti","Achham","Kailali","Darchula","Baitadi",
          "Dadeldhura","Kanchanpur","Humla"]
+/*
 
-   /* public static final List<String> districtRaw = ["Illam","Jhapa","Pachthar","Taplejung","Bhojpur","Dhankuta","Morang"
-            ,"Sunsari","Sankhuwasaba","Tehrathum"
-            ,"Khotang","Okhaldhunga","Saptari","Siraha","Solukhumbu","Udaypur","Dhanusha","Dolakha","Mahottari",
-            "Ramechhap","Sarlahi","Sindhuli","Bhaktapur","Dhading","Kathmandu","Kavrepalanchok","Lalitpur","Nuwakot"
-            ,"Rasuwa","Sindhupalchok","Bara","Chitwan","Makawanpur","Parsa","Rautahat","Gorkha","Kaski","Lamjung",
-            "Manang","Syangja","Tanahun","Baglung","Parwat","Mustang","Myagdi","Gulmi","Kapilvastu",
-            "Nawalparasi","Palpa","Rupandehi","Dang","Pyuthan","Rolpa","Rukum","Salyan","Banke","Bardiya","Dailekh",
-            "Jajarkot","Surkhet","Dolpa","Humla","Jumla","Kalikot","Mugu","Achham","Bajhang","Bajura","Doti","Kailali",
-            "Baitadi","Dadeldhura","Darchula","Kanchanpur","Arghakhanchi"]
+    public static final List<String> districtRaw = ["Achham","Arghakhanchi","Baglung","Baitadi","Bajhang","Bajura","Banke","Bara","Bardiya","Bhaktapur",
+            "Bhojpur","Chitawan","Dadeldhura","Dailekh","Dang","Darchula","Dhading","Dhankuta","Dhanusa","Dolakha",
+            "Dolpa","Doti","Gorkha","Gulmi","Humla","Ilam","Jajarkot","Jhapa","Jumla","Kailali","Kalikot","Kanchanpur",
+            "Kapilbastu","Kaski","Kathmandu","Kavrepalanchok","Khotang","Lalitpur","Lamjung","Mahottari","Makwanpur",
+            "Manang","Morang","Mugu","Mustang","Myagdi","Nawalparasi","Nuwakot","Okhaldhunga","Palpa","Panchthar","Parbat",
+            "Parsa","Pyuthan","Ramechhap","Rasuwa","Rautahat","Rolpa","Rukum","Rupandehi","Salyan","Sankhuwasabha","Saptari",
+            "Sarlahi","Sindhuli","Sindhupalchok","Siraha","Solukhumbu","Sunsari","Surkhet","Syangja","Taplejung","Tanahu","Terhathum","Udayapur"]
 */
+
 }

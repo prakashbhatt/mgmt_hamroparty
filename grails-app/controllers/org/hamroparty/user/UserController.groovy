@@ -105,7 +105,7 @@ class UserController extends BaseController{
     }
 
     def home() {
-       String sortField = "sn"
+       String sortField = "id"
        String sortOrder = "asc"
         def  newRegistration;
         def  oldRegistration;
@@ -116,6 +116,7 @@ class UserController extends BaseController{
 
             newRegistration = criteria.list(max: 10, offset: params.offset) {
                 and {
+                    if(params.memberId && params.memberId!=null && params.newMember)like("memberId", "%"+params.memberId+"%")
                     if(params.firstName && params.firstName!=null && params.newMember)like("firstName", "%"+params.firstName+"%")
                     if(params.lastName && params.lastName!=null && params.newMember)like("lastName", "%"+params.lastName+"%")
                     if(params.emailAddress && params.emailAddress!=null && params.newMember)like("emailAddress", "%"+params.emailAddress+"%")
@@ -128,14 +129,22 @@ class UserController extends BaseController{
 
             oldRegistration = criteria1.list(max: 10, offset: params.offset) {
                 and {
+                    if(params.memberId && params.memberId!=null && params.oldMember)like("memberId", "%"+params.memberId+"%")
                     if(params.firstName && params.firstName!=null && params.oldMember)like("firstName", "%"+params.firstName+"%")
                     if(params.lastName && params.lastName!=null && params.oldMember)like("lastName", "%"+params.lastName+"%")
                     if(params.emailAddress && params.emailAddress!=null && params.oldMember)like("emailAddress", "%"+params.emailAddress+"%")
                     if(params.contractNo && params.contractNo!=null && params.oldMember)like("contractNo", "%"+params.contractNo+"%")
+                    if(params.memberStatus && params.memberStatus!=null && params.oldMember)like("memberStatus", "%"+params.memberStatus+"%")
                     eq('acceptMember',true)
                 }
                 order(sortField, sortOrder)
             }
+        newRegistration.each {
+            if (!it.memberStatus) {
+               it.memberStatus = "Requested"
+            }
+        }
+
         [newRegistration: newRegistration, newTotal: Registration.findAllByAcceptMember(false).size(), oldRegistration: oldRegistration, total: Registration.findAllByAcceptMember(true).size()]
     }
 
