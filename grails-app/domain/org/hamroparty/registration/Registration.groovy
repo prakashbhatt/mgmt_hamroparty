@@ -14,8 +14,8 @@ class Registration {
     String streetTole
     Date dateOfBirth;
     String gender;
-    Date applicationDate;
-    Date registrationDate = new Date();
+    Date applicationDate = new Date();
+    Date registrationDate
     String educationDetails
     String occupation;
     byte[] image
