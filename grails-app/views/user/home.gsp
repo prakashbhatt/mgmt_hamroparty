@@ -81,7 +81,7 @@
                         <td>${fieldValue(bean: userInstance, field: "lastName")}</td>
                         <td>${fieldValue(bean: userInstance, field: "emailAddress")}</td>
                         <td>${fieldValue(bean: userInstance, field: "contractNo")}</td>
-                        <td class="blink_text">${fieldValue(bean: userInstance, field: "memberStatus")}  &#10026</td>
+                        <td class="blink_text"> &#x1f607 ${fieldValue(bean: userInstance, field: "memberStatus")}  &#10026 </td>
                         <td>
                             <g:link controller="registration" action="acceptMember" params="[id:"${userInstance.id}"]" onclick = "return confirm('Are you sure?');">Accept</g:link> /
                             <g:link controller="registration" action="deniedMember" params="[id:"${userInstance.id}"]" onclick = "return confirm('Are you sure?. Please confirm for delete member from the system.');">Reject</g:link>
