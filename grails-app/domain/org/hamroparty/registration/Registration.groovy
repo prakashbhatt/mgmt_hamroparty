@@ -15,7 +15,7 @@ class Registration {
     Date dateOfBirth;
     String gender;
     Date applicationDate;
-    Date registrationDate;
+    Date registrationDate = new Date();
     String educationDetails
     String occupation;
     byte[] image
