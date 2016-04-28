@@ -146,7 +146,7 @@ class UserController extends BaseController{
             }
         }
 
-        [newRegistration: newRegistration, newTotal: Registration.findAllByAcceptMember(false).size(), oldRegistration: oldRegistration, total: Registration.findAllByAcceptMember(true).size()]
+        [newRegistration: newRegistration, newTotal: newRegistration.size(), oldRegistration: oldRegistration, total: oldRegistration.size()]
     }
 
     private List sortParams(sortOrder, sortField) {
