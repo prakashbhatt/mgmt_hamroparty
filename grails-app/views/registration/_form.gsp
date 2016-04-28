@@ -160,7 +160,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'contractNo', 'error')} required">
     <label for="contractNo">
-        <g:message code="registration.contractNo.label" default="Contract No" />
+        <g:message code="registration.contractNo.label" default="Contact No" />
         <span class="required-indicator">*</span>
     </label>
     <g:textField name="contractNo" maxlength="10" required="" value="${registrationInstance?.contractNo}"/>

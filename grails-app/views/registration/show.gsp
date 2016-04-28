@@ -207,7 +207,7 @@
 			
 				<g:if test="${registrationInstance?.contractNo}">
 				<li class="fieldcontain">
-					<span id="contractNo-label" class="property-label"><g:message code="registration.contractNo.label" default="Contract No" /></span>
+					<span id="contractNo-label" class="property-label"><g:message code="registration.contractNo.label" default="Contact No" /></span>
 					
 						<span class="property-value" aria-labelledby="contractNo-label"><g:fieldValue bean="${registrationInstance}" field="contractNo"/></span>
 					
