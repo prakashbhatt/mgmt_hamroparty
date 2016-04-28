@@ -260,7 +260,7 @@ class RegistrationController extends BaseController{
         for (Registration re : registrations) {
             re.memberId = generateMemberId(re.district)
             re.sequence = getMemberSequence(re.district)
-
+            re.memberStatus=memberStatus[1]
             dummyInfo(re)
         }
 
