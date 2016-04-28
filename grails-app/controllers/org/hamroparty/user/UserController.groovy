@@ -6,7 +6,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class UserController extends BaseController{
 
-   def beforeInterceptor = [action:this.&auth, except:['login','logout']]
+    def beforeInterceptor = [action:this.&auth, except:['login','logout']]
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -105,8 +105,8 @@ class UserController extends BaseController{
     }
 
     def home() {
-       String sortField = "id"
-       String sortOrder = "asc"
+        String sortField = "id"
+        String sortOrder = "desc"
         def  newRegistration;
         def  oldRegistration;
         def criteria = Registration.createCriteria();
@@ -114,34 +114,35 @@ class UserController extends BaseController{
         (sortOrder, sortField) = sortParams(sortOrder, sortField)
         println params;
 
-            newRegistration = criteria.list(max: 10, offset: params.offset) {
-                and {
-                    if(params.memberId && params.memberId!=null && params.newMember)like("memberId", "%"+params.memberId+"%")
-                    if(params.firstName && params.firstName!=null && params.newMember)like("firstName", "%"+params.firstName+"%")
-                    if(params.lastName && params.lastName!=null && params.newMember)like("lastName", "%"+params.lastName+"%")
-                    if(params.emailAddress && params.emailAddress!=null && params.newMember)like("emailAddress", "%"+params.emailAddress+"%")
-                    if(params.contractNo && params.contractNo!=null && params.newMember)like("contractNo", "%"+params.contractNo+"%")
-                    eq('acceptMember',false)
-                }
-                order(sortField, sortOrder)
+        newRegistration = criteria.list(max: 10, offset: params.offset) {
+            and {
+                if(params.memberId && params.memberId!=null && params.newMember)like("memberId", "%"+params.memberId+"%")
+                if(params.firstName && params.firstName!=null && params.newMember)like("firstName", "%"+params.firstName+"%")
+                if(params.lastName && params.lastName!=null && params.newMember)like("lastName", "%"+params.lastName+"%")
+                if(params.emailAddress && params.emailAddress!=null && params.newMember)like("emailAddress", "%"+params.emailAddress+"%")
+                if(params.contractNo && params.contractNo!=null && params.newMember)like("contractNo", "%"+params.contractNo+"%")
+                eq('acceptMember',false)
 
             }
+            order(sortField, sortOrder)
 
-            oldRegistration = criteria1.list(max: 10, offset: params.offset) {
-                and {
-                    if(params.memberId && params.memberId!=null && params.oldMember)like("memberId", "%"+params.memberId+"%")
-                    if(params.firstName && params.firstName!=null && params.oldMember)like("firstName", "%"+params.firstName+"%")
-                    if(params.lastName && params.lastName!=null && params.oldMember)like("lastName", "%"+params.lastName+"%")
-                    if(params.emailAddress && params.emailAddress!=null && params.oldMember)like("emailAddress", "%"+params.emailAddress+"%")
-                    if(params.contractNo && params.contractNo!=null && params.oldMember)like("contractNo", "%"+params.contractNo+"%")
-                    if(params.memberStatus && params.memberStatus!=null && params.oldMember)like("memberStatus", "%"+params.memberStatus+"%")
-                    eq('acceptMember',true)
-                }
-                order(sortField, sortOrder)
+        }
+
+        oldRegistration = criteria1.list(max: 10, offset: params.offset) {
+            and {
+                if(params.memberId && params.memberId!=null && params.oldMember)like("memberId", "%"+params.memberId+"%")
+                if(params.firstName && params.firstName!=null && params.oldMember)like("firstName", "%"+params.firstName+"%")
+                if(params.lastName && params.lastName!=null && params.oldMember)like("lastName", "%"+params.lastName+"%")
+                if(params.emailAddress && params.emailAddress!=null && params.oldMember)like("emailAddress", "%"+params.emailAddress+"%")
+                if(params.contractNo && params.contractNo!=null && params.oldMember)like("contractNo", "%"+params.contractNo+"%")
+                if(params.memberStatus && params.memberStatus!=null && params.oldMember)like("memberStatus", "%"+params.memberStatus+"%")
+                eq('acceptMember',true)
             }
+            order(sortField, sortOrder)
+        }
         newRegistration.each {
             if (!it.memberStatus) {
-               it.memberStatus = "Requested"
+                it.memberStatus = "Requested !"
             }
         }
 
@@ -153,7 +154,7 @@ class UserController extends BaseController{
         if (params.sort && params.order && !params.sort.equals('action')) {
             sortField = params.sort;
             sortOrder = params.order
-           // println sortOrder+"---------"+sortField
+            // println sortOrder+"---------"+sortField
         }
         [sortOrder, sortField]
     }
