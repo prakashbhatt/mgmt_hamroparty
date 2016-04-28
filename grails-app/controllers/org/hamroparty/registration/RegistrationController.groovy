@@ -30,20 +30,14 @@ class RegistrationController extends BaseController{
     }
 
     def save() {
-        /*if (!params.sn || params.sn == null) {
-            def registration = Registration.list([max: 1, sort: "sn", order: "desc"])
-            params.sn = Integer.parseInt(registration.get(0).sn)+1
-        }*/
-
-        def registration = Registration.list([max: 1, sort: "id", order: "desc"])
 
         params.memberId = generateMemberId(params.district)
         params.sequence = getMemberSequence(params.district)
         params.memberStatus = memberStatus[1];
         println "--------------------"+session['user'].id
         try {
-            registration.acceptedBy=session['user'].id.toString()
-            registration.acceptMember = true;
+            params.acceptedBy=session['user'].id.toString()
+            params.acceptMember = true;
         } catch (e) {
             e.printStackTrace()
         }
@@ -254,6 +248,7 @@ class RegistrationController extends BaseController{
         def c = Registration.createCriteria()
         def registrations = c.list {
             eq("memberId", '')
+            eq("acceptMember", true)
             order("id", "asc")
         }
 
