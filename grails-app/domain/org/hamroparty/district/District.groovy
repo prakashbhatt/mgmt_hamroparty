@@ -6,6 +6,8 @@ class District {
     String abbreviation
 
     static constraints = {
+        name(nullable: false, unique: true)
+        code(nullable: false, unique: true)
         abbreviation(nullable: true)
     }
 
