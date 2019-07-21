@@ -3,6 +3,8 @@ package org.hamroparty.registration
 import org.hamroparty.district.District
 import org.hamroparty.base.BaseController
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -34,7 +36,7 @@ class RegistrationController extends BaseController{
         params.memberId = generateMemberId(params.district)
         params.sequence = getMemberSequence(params.district)
         params.memberStatus = memberStatus[1];
-        println "--------------------"+session['user'].id
+       // println "--------------------"+session['user'].id
         try {
             params.acceptedBy=session['user'].id.toString()
             params.acceptMember = true;
@@ -42,6 +44,9 @@ class RegistrationController extends BaseController{
             e.printStackTrace()
         }
 
+
+      upload(params)
+        println ("----params----->>"+params)
 
         def registrationInstance = new Registration(params)
         if (!registrationInstance.save(flush: true)) {
@@ -51,6 +56,25 @@ class RegistrationController extends BaseController{
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'registration.label', default: 'Registration'), registrationInstance.id])
         redirect(action: "show", id: registrationInstance.id)
+    }
+
+
+    private CommonsMultipartFile getFile() {
+
+            MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request;
+            CommonsMultipartFile file = (CommonsMultipartFile) mpr.getFile("image");
+            file
+
+    }
+    private void upload(def params) {
+
+        final String path=  grailsApplication.mainContext.servletContext.getRealPath('')
+        CommonsMultipartFile file = getFile()
+        if (file) {
+            file.transferTo(new File(path + "/images/hamroparty-members/${params.memberId+"_"+file.getOriginalFilename()}"))
+
+            params.imagePath = file.getOriginalFilename()
+        }
     }
 
     def show(Long id) {

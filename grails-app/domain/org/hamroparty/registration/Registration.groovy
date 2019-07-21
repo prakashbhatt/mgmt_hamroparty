@@ -18,7 +18,7 @@ class Registration {
     Date registrationDate
     String educationDetails
     String occupation;
-    byte[] image
+    String imagePath
     String fatherName
     String motherName
     String grandFatherName
@@ -65,7 +65,7 @@ class Registration {
         registrationDate(nullable: true,blank: true);
         educationDetails(blank: false, inList: ["No school","Under SLC","SLC","+2","Bachelor","Master","PhD","Other"])
         occupation(blank: false, maxSize: 150);
-        image(nullable: true,blank: true,  maxSize:1073741824)
+        imagePath(nullable: true,blank: true)
         fatherName(blank: false, maxSize: 150)
         motherName(blank: false, maxSize: 150)
         grandFatherName(blank: false, maxSize: 150)

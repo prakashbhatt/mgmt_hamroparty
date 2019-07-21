@@ -179,4 +179,30 @@ class UserController extends BaseController{
         redirect(action:'login')
     }
 
+    def gallery(){
+        final String path=  grailsApplication.mainContext.servletContext.getRealPath('')
+
+        def baseFolder = grailsApplication.mainContext.servletContext.getRealPath('')
+        def imagesFolder = baseFolder + '/images/hamroparty-members'
+        def imageList1 = new File(imagesFolder).list()
+        def imageList = Arrays.asList(imageList1)
+        [gallery: imageList]
+
+    }
+
+    def download(){
+
+        def baseFolder = grailsApplication.mainContext.servletContext.getRealPath('')
+        def imagesFolder = baseFolder + '/images/hamroparty-members/'
+        def file = new File(imagesFolder+params.name)
+
+        if (file.exists()) {
+            response.setContentType("application/octet-stream")
+            response.setHeader("Content-disposition", "filename=${file.name}")
+            response.outputStream << file.bytes
+            return
+        }
+
+    }
+
 }

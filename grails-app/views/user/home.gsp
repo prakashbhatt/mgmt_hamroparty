@@ -33,6 +33,7 @@
                                                                                             args="[entityName]"/></g:link></li>
 
         </g:if>
+        <li><g:link controller="user" action="gallery">Photo Gallery</g:link></li>
         <li><g:link controller="user" action="logout">Logout</g:link></li>
     </ul>
 </div>

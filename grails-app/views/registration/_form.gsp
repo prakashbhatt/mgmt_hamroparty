@@ -114,15 +114,7 @@
     <g:textField name="occupation" maxlength="150" required="" value="${registrationInstance?.occupation}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'image', 'error')} ">
-    <label for="image">
-        <g:message code="registration.image.label" default="Image" />
 
-    </label>
-    <g:if test="${!registrationInstance?.image}">
-        <input type="file" id="image" name="image"/>
-    </g:if>
-</div>
 
 
 
@@ -172,6 +164,16 @@
 
     </label>
     <g:field type="email" name="emailAddress" value="${registrationInstance?.emailAddress}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'imagePath', 'error')} ">
+    <label for="imagePath">
+        <g:message code="registration.imagePath.label" default="Image" />
+
+    </label>
+    <g:if test="${!registrationInstance?.imagePath}">
+        <input type="file" id="image" name="image"/>
+    </g:if>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'howDidYouHearAboutUs', 'error')} ">
